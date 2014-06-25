@@ -1,0 +1,21 @@
+[
+	{
+		"id" : "1",
+		"question" : "quel choix ?",
+		"choix" : [
+			{
+				"id" : "1",
+				"text" : "choix 1"
+			},
+			{
+				"id" : "2",
+				"text" : "choix 2"
+			},
+			{
+				"id" : "3",
+				"text" : "choix 3"
+			}
+		],
+		"reponse" : "2"
+	}
+]
