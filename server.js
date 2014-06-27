@@ -1,14 +1,33 @@
 var express = require('express');
 
+var mongoose = require('mongoose');
+
 var app = express();
+
 var http = require('http').Server(app);
 
 var conf = require('./server.json');
 
-var questions = require(conf.questions);
+mongoose.connect('mongodb://localhost/quiiz');
+
+var questionSchema = mongoose.Schema({
+		id: String,
+		question: String,
+		choix: [
+			{
+				id: String,
+				text: String
+			}
+		],
+		reponse: String
+});
+var Question = mongoose.model('questions',questionSchema);
 
 app.get('/', function(req,res) {
-	res.send(questions);
+	Question.find(function(err,questions){
+		res.send(questions);
+	});
+	
 });
 
 http.listen(3000, function() {
